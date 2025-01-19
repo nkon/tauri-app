@@ -3,6 +3,7 @@ import reactLogo from "./assets/react.svg";
 import { invoke } from "@tauri-apps/api/core";
 import AudioPlayer from './AudioPlayer';
 import ToDo from './ToDo';
+import ToDoSqlite from './ToDoSqlite';
 import "./App.css";
 
 function App() {
@@ -49,6 +50,10 @@ function App() {
 
       <div>
         <AudioPlayer />
+      </div>
+
+      <div>
+        <ToDoSqlite />
       </div>
 
       <div>
