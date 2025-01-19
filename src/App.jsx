@@ -2,30 +2,17 @@ import { useState } from "react";
 import reactLogo from "./assets/react.svg";
 import { invoke } from "@tauri-apps/api/core";
 import AudioPlayer from './AudioPlayer';
+import ToDo from './ToDo';
 import "./App.css";
 
 function App() {
   const [greetMsg, setGreetMsg] = useState("");
   const [name, setName] = useState("");
 
-  const [tasks, setTasks] = useState([]);
-  const [input, setInput] = useState('');
-
   async function greet() {
     // Learn more about Tauri commands at https://tauri.app/develop/calling-rust/
     setGreetMsg(await invoke("greet", { name }));
   }
-
-  const addTask = () => {
-    if (input.trim()) {
-      setTasks([...tasks, input.trim()]);
-      setInput('');
-    }
-  };
-
-  const removeTask = (index) => {
-    setTasks(tasks.filter((_, i) => i !== index));
-  };
 
   return (
     <main className="container">
@@ -64,22 +51,8 @@ function App() {
         <AudioPlayer />
       </div>
 
-      <div style={{ textAlign: 'center', padding: '2rem' }}>
-        <h1>ToDo App</h1>
-        <input
-          type="text"
-          value={input}
-          onChange={(e) => setInput(e.target.value)}
-          placeholder="Enter a task"
-        />
-        <button onClick={addTask}>Add Task</button>
-        <ul>
-          {tasks.map((task, index) => (
-            <li key={index}>
-              {task} <button onClick={() => removeTask(index)}>Delete</button>
-            </li>
-          ))}
-        </ul>
+      <div>
+        <ToDo />
       </div>
 
     </main>
