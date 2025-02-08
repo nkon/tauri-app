@@ -4,6 +4,7 @@ import { invoke } from "@tauri-apps/api/core";
 import AudioPlayer from './AudioPlayer';
 import ToDo from './ToDo';
 import "./App.css";
+import ToDoSqliteP from "./TodoSqliteP";
 
 function App() {
   const [greetMsg, setGreetMsg] = useState("");
@@ -53,6 +54,10 @@ function App() {
 
       <div>
         <ToDo />
+      </div>
+
+      <div>
+        <ToDoSqliteP />
       </div>
 
     </main>
